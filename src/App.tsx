@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import QualityTable from './components/QualityTable';
 import DetailTable from './components/DetailTable';
+import QualityCharts from './components/QualityCharts';
 import { CarData, QualityAnalysis } from './types';
 
 function App() {
@@ -56,6 +57,10 @@ function App() {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Análisis de Pérdidas por Calidad</h1>
         
+        <div className="mb-8">
+          <QualityCharts analysis={qualityAnalysis} />
+        </div>
+
         <QualityTable 
           analysis={qualityAnalysis}
           onSelectQuality={setSelectedQuality}

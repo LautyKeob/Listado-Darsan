@@ -20,12 +20,10 @@ const DetailTable: React.FC<Props> = ({ items, quality, lossPercentage }) => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Modelo</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Base</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">% Pérdida</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pérdida Estimada</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio con Pérdida</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Explicación</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Link</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -36,19 +34,17 @@ const DetailTable: React.FC<Props> = ({ items, quality, lossPercentage }) => {
 
               return (
                 <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.MODELO || '-'}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{price.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lossPercentage}%</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{loss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{finalPrice.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-                  <td className="px-6 py-4 text-sm text-gray-500">{item.EXPLICACION || '-'}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
+                    <a href={item.LINK} target="_blank" rel="noopener noreferrer">Ver anuncio</a>
+                  </td>
                 </tr>
               );
             })}
             <tr className="bg-gray-50 font-semibold">
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">TOTAL</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalValue.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">-</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalLoss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{(totalValue - totalLoss).toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">-</td>
