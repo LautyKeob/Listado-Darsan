@@ -29,14 +29,14 @@ const DetailTable: React.FC<Props> = ({ items, quality, lossPercentage }) => {
           <tbody className="bg-white divide-y divide-gray-200">
             {items.map((item, index) => {
               const price = Number(item.Precio) || 0;
-              const loss = (price * lossPercentage) / 100;
+              const loss = Math.round(price * lossPercentage / 100);
               const finalPrice = price - loss;
 
               return (
                 <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{price.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{loss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{finalPrice.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{Math.round(price)}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{loss}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{Math.round(finalPrice)}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
                     <a href={item.LINK} target="_blank" rel="noopener noreferrer">Ver anuncio</a>
                   </td>
@@ -44,9 +44,9 @@ const DetailTable: React.FC<Props> = ({ items, quality, lossPercentage }) => {
               );
             })}
             <tr className="bg-gray-50 font-semibold">
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalValue.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalLoss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{(totalValue - totalLoss).toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{Math.round(totalValue)}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{Math.round(totalLoss)}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{Math.round(totalValue - totalLoss)}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">-</td>
             </tr>
           </tbody>

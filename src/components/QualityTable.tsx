@@ -44,17 +44,17 @@ const QualityTable: React.FC<Props> = ({ analysis, onSelectQuality, selectedQual
             >
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.quality}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.count}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{item.totalValue.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{Math.round(item.totalValue)}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.lossPercentage}%</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{item.estimatedLoss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">€{Math.round(item.estimatedLoss)}</td>
             </tr>
           ))}
           <tr className="bg-gray-50 font-semibold">
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">TOTAL</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{totalCount}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalValue.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{Math.round(totalValue)}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">-</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{totalLoss.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">€{Math.round(totalLoss)}</td>
           </tr>
         </tbody>
       </table>
